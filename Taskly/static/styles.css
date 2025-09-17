@@ -1,0 +1,68 @@
+/* Styling for homepage */
+h1{
+  font-style: italic;
+  font-family: "Brush Script MT", cursive;
+  text-align: center;
+  color: antiquewhite;
+  text-shadow: 2px 2px 4px darkred;
+  font-size: 65px;
+}
+
+body {
+  background-color:indianred;
+  border: 5px solid darkred;
+  border-radius: 15px;
+  padding: 10px;
+  text-align: center;
+}
+td, th{
+  padding: 10px;
+  text-align: center;
+  color: darkred;
+}
+
+table{
+  border: 5px solid antiquewhite;
+  margin: auto;
+
+}
+
+
+input[type="submit"],[type="text"]{
+  border: 3px solid darkred;
+  border-radius: 25px;
+  text-align: center;
+  background-color: antiquewhite;
+  cursor: grab;
+  
+}
+
+input:hover{
+  background-color: rgb(212, 13, 13);
+}
+
+
+/* styling for the 3 boxes on home page*/
+.three-box{
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      margin: 30px;
+    }
+
+    .task-box {
+      flex: 1;
+      min-width: 200px;
+      background-color: #f0f8ff;
+      border: 2px solid #ccc;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 2px 2px 8px darkred;
+      text-align: center;
+      font-family: Arial, sans-serif;
+    }
+
+    .task-box h3 {
+      margin-top: 0;
+      color: #333;
+    }

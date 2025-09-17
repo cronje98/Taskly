@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title> Taskly </title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body>
+    <div class="heading">
+        <h1> ________T A S K L Y________ </h1><br>
+    </div>
+
+
+
+<!--  belows deals with the content(submit and tasklist display) for the 3 boxes(Today,Tomorrow,Upcoming) on homepage-->
+
+<div class="three-box">
+
+    <!-- Today -->
+    <div class="task-box">
+        <h3>Today</h3>
+      
+        <form method="Post" action="/add"> 
+
+            <input type="text" id="entry" name="entry" placeholder="Enter Task" required><br>
+            <input type="hidden" name="section" value="Today">  <!-- 👈 This is crucial -->
+            <input type="submit" value="Submit" >
+
+        </form>
+
+     
+    <br><br>
+
+        <table border="1">
+        <tr>
+       
+            <th>Task</th>
+            <th> Remove </th>
+        </tr>
+        {% for task in today_tasks  %}
+        <tr>
+        
+            <td>{{ task.name }}</td>
+            <td>
+                <form method="POST" action="{{ url_for('delete', task_id=task.id) }}" style="display:inline;">
+                <input type="submit" value="X" title="Delete this task">
+                </form>
+            </td>
+        </tr>
+        {% else %}
+        <tr>
+            <td colspan="2">No tasks found.</td>
+        </tr>
+        {% endfor %}
+        </table>
+    </div>
+
+    <!-- Tomorrow-->
+    <div class="task-box">
+      <h3>Tomorrow</h3>
+      
+      <form method="Post" action="/add"> 
+      
+        <input type="text" id="entry" name="entry" placeholder="Enter Task" required><br>
+        <input type="hidden" name="section" value="Tomorrow">  <!-- Ensures section value does not remain empty when we pass the form submission -->
+        <input type="submit" value="Submit" >
+
+    </form>
+
+    <br><br>
+
+    <table border="1">
+    <tr>
+       
+        <th>Task</th>
+        <th> Remove </th>
+    </tr>
+    {% for task in tomorrow_tasks %}
+    <tr>
+        
+        <td>{{ task.name }}</td>
+        <td>
+            <form method="POST" action="{{ url_for('delete', task_id=task.id) }}" style="display:inline;">
+            <input type="submit" value="X" title="Delete this task">
+      </form>
+    </td>
+    </tr>
+    {% else %}
+    <tr>
+        <td colspan="2">No tasks found.</td>
+    </tr>
+    {% endfor %}
+    </table>
+    </div>
+
+    <!--Upcoming-->
+    <div class="task-box">
+      <h3>Upcoming</h3>
+      
+      <form method="Post" action="/add"> 
+       
+        <input type="text" id="entry" name="entry" placeholder="Enter Task" required><br>
+        <input type="hidden" name="section" value="Upcoming">  <!-- Ensures section value does not remain empty when we pass the form submission -->
+        <input type="submit" value="Submit" >
+
+    </form>
+
+    <br><br>
+
+    <table border="1">
+    <tr>
+       
+        <th>Task</th>
+        <th> Remove </th>
+    </tr>
+    {% for task in upcoming_tasks %}
+    <tr>
+        
+        <td>{{ task.name }}</td>
+        <td>
+            <form method="POST" action="{{ url_for('delete', task_id=task.id) }}" style="display:inline;">
+            <input type="submit" value="X" title="Delete this task">
+      </form>
+    </td>
+    </tr>
+    {% else %}
+    <tr>
+        <td colspan="2">No tasks found.</td>
+    </tr>
+    {% endfor %}
+    </table>
+    </div>
+
+  </div>
+
+</body>
+</html>
